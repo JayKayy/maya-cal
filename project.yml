@@ -1,0 +1,13 @@
+parameters: {}
+environment: {}
+packages:
+  - name: mayan
+    environment: {}
+    parameters: {}
+    actions:
+      - name: maya-cal
+        main: ''
+        runtime: 'go:default'
+        environment: {}
+        parameters: {}
+
