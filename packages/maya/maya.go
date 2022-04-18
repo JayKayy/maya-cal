@@ -37,10 +37,13 @@ func Main(req Request) (*Response, error) {
 		return nil, errors.New("'day', 'month', and 'year' variables are required")
 	}
 
-	d, _ := strconv.Atoi(req.Day)
-	m, _ := strconv.Atoi(req.Month)
-	y, _ := strconv.Atoi(req.Year)
+	d, ed := strconv.Atoi(req.Day)
+	m, em := strconv.Atoi(req.Month)
+	y, ey := strconv.Atoi(req.Year)
 
+	if ed != nil || em != nil || ey != nil {
+		return nil, fmt.Errorf("Error parsing day month and year as integers")
+	}
 	// d := 19
 	// m := 10
 	// y := 1991
