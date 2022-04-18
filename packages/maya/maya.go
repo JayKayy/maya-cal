@@ -5,12 +5,9 @@ import (
 )
 
 type Request struct {
-	// Day   int `json:"day"`
-	// Month int `json:"month"`
-	// Year  int `json:"year"`
-	Day   int
-	Month int
-	Year  int
+	Day   int `json:"day"`
+	Month int `json:"month"`
+	Year  int `json:"year"`
 }
 
 type Response struct {
@@ -40,9 +37,13 @@ func Main(req Request) (*Response, error) {
 	// 	}, nil
 	// }
 
-	d := req.Day
-	m := req.Month
-	y := req.Year
+	// d := req.Day
+	// m := req.Month
+	// y := req.Year
+
+	d := 19
+	m := 10
+	y := 1991
 
 	//	fmt.Println(d, m, y)
 	// The algorithm is valid for all Gregorian calendar dates starting on March 1, 4801 BC (astronomical year -4800) at noon UT.[14]
