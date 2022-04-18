@@ -5,9 +5,12 @@ import (
 )
 
 type Request struct {
-	Day   int `json:"day"`
-	Month int `json:"month"`
-	Year  int `json:"year"`
+	// Day   int `json:"day"`
+	// Month int `json:"month"`
+	// Year  int `json:"year"`
+	Day   int
+	Month int
+	Year  int
 }
 
 type Response struct {
@@ -29,20 +32,23 @@ func Main(req Request) (*Response, error) {
 
 	haabMonths := map[int]string{0: "Pop", 1: "Wo", 2: "Sip", 3: "Sotz'", 4: "Sek", 5: "Xul", 6: "Yaxk'in", 7: "Mol", 8: "Ch'en", 9: "Yax", 10: "Sak", 11: "Kej", 12: "Mak", 13: "K'ank'in", 14: "Muwan", 15: "Pax", 16: "Kâ€™ayabâ€™", 17: "Kâ€™umkuâ€™", 18: "Wayeb'"}
 	tzolkinMonths := map[int]string{0: "Imix", 1: "Ik'", 2: "Ak'b'al", 3: "K'an", 4: "Chikchan", 5: "Kimi", 6: "Manik'", 7: "Lamat", 8: "Muluk", 9: "Ok", 10: "Chuwen", 11: "Eb'", 12: "B'en", 13: "Ix", 14: "Men", 15: "K'ib'", 16: "Kab'an", 17: "Etz'nab'", 18: "Kawak", 19: "Ajaw"}
+
 	// Used for local testing
-	if req.Day == 0 || req.Month == 0 {
-		return &Response{
-			Body: "{ \"err\" : \"Day, month, and year variables required\"}",
-		}, nil
-	}
+	// if req.Day == 0 || req.Month == 0 {
+	// 	return &Response{
+	// 		Body: "{ \"err\" : \"'day', 'month', and 'year' variables are required\"}",
+	// 	}, nil
+	// }
+
 	d := req.Day
 	m := req.Month
 	y := req.Year
-	fmt.Println(d, m, y)
+
+	//	fmt.Println(d, m, y)
 	// The algorithm is valid for all Gregorian calendar dates starting on March 1, 4801 BC (astronomical year -4800) at noon UT.[14]
-	if y < -4800 || y > 4000 {
-		return nil, fmt.Errorf("Bad Year")
-	}
+	//if y < -4800 || y > 4000 {
+	//	return nil, fmt.Errorf("Bad Year")
+	//}
 
 	// Calculate the Julian Day Number (JDN)
 	// The Julian day number (JDN) is the number of days between a specific date and the 1ˢᵗ of January, 4713 B.C.E.
