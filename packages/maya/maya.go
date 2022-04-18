@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 )
 
@@ -31,11 +32,9 @@ func Main(req Request) (*Response, error) {
 	tzolkinMonths := map[int]string{0: "Imix", 1: "Ik'", 2: "Ak'b'al", 3: "K'an", 4: "Chikchan", 5: "Kimi", 6: "Manik'", 7: "Lamat", 8: "Muluk", 9: "Ok", 10: "Chuwen", 11: "Eb'", 12: "B'en", 13: "Ix", 14: "Men", 15: "K'ib'", 16: "Kab'an", 17: "Etz'nab'", 18: "Kawak", 19: "Ajaw"}
 
 	// Used for local testing
-	// if req.Day == 0 || req.Month == 0 {
-	// 	return &Response{
-	// 		Body: "{ \"err\" : \"'day', 'month', and 'year' variables are required\"}",
-	// 	}, nil
-	// }
+	if req.Day == 0 || req.Month == 0 {
+		return nil, errors.New("{ \"err\" : \"'day', 'month', and 'year' variables are required\"}")
+	}
 
 	// d := req.Day
 	// m := req.Month
@@ -91,6 +90,7 @@ func Main(req Request) (*Response, error) {
 	loN := fmt.Sprintf("G%d", (jdn%9)+1)
 
 	return &Response{
-		Body: fmt.Sprintf("{\"dd-mm-yyyy\": \"%d-%d-%d\", \"longCount\": \"%s\", \"pronounce\": \"%s\",\"haab\": \"%s\",\"tzolk'in\": \"%s\",\"Lord of the Night\": \"%s\"}", d, m, y, longCount, p, haab, tz, loN),
+		StatusCode: 200,
+		Body:       fmt.Sprintf("{\"dd-mm-yyyy\": \"%d-%d-%d\", \"longCount\": \"%s\", \"pronounce\": \"%s\",\"haab\": \"%s\",\"tzolk'in\": \"%s\",\"Lord of the Night\": \"%s\"}", d, m, y, longCount, p, haab, tz, loN),
 	}, nil
 }
