@@ -46,9 +46,9 @@ func Main(req Request) (*Response, error) {
 
 	//	fmt.Println(d, m, y)
 	// The algorithm is valid for all Gregorian calendar dates starting on March 1, 4801 BC (astronomical year -4800) at noon UT.[14]
-	//if y < -4800 || y > 4000 {
-	//	return nil, fmt.Errorf("Bad Year")
-	//}
+	if y < -4800 || y > 4000 {
+		return nil, fmt.Errorf("Bad Year")
+	}
 
 	// Calculate the Julian Day Number (JDN)
 	// The Julian day number (JDN) is the number of days between a specific date and the 1ˢᵗ of January, 4713 B.C.E.
