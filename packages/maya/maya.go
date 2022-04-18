@@ -33,16 +33,16 @@ func Main(req Request) (*Response, error) {
 
 	// Used for local testing
 	if req.Day == 0 || req.Month == 0 {
-		return nil, errors.New("{ \"err\" : \"'day', 'month', and 'year' variables are required\"}")
+		return nil, errors.New("'day', 'month', and 'year' variables are required")
 	}
 
-	// d := req.Day
-	// m := req.Month
-	// y := req.Year
+	d := req.Day
+	m := req.Month
+	y := req.Year
 
-	d := 19
-	m := 10
-	y := 1991
+	// d := 19
+	// m := 10
+	// y := 1991
 
 	//	fmt.Println(d, m, y)
 	// The algorithm is valid for all Gregorian calendar dates starting on March 1, 4801 BC (astronomical year -4800) at noon UT.[14]
